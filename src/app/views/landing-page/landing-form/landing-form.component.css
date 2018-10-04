@@ -37,3 +37,13 @@
 .error{
 
 }
+
+
+.invalid{
+  display: block;
+  border: 1px solid red;
+  border-radius: 3.5px;
+}
+#birthDateForm{
+  display: inline;
+}

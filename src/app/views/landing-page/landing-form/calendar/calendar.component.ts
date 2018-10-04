@@ -1,5 +1,6 @@
-import {Component, forwardRef, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import {Component, forwardRef, OnInit, ViewEncapsulation, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {element} from 'protractor';
 
 
 @Component({
@@ -18,7 +19,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 export class CalendarComponent implements OnInit, ControlValueAccessor {
 
 
-  @Input() isValid: boolean;
+  isValid: boolean;
   it: any;
   birthDate: Date;
   currentYear: Date = new Date(Date.now());
@@ -66,4 +67,7 @@ export class CalendarComponent implements OnInit, ControlValueAccessor {
     this.onChange(date.toLocaleDateString());
   }
 
+  @Input() set isIValid(isValid: boolean) {
+    this.isValid = isValid;
+  }
 }

@@ -1,4 +1,5 @@
-<p-calendar [(ngModel)] = "birthDate"
+<p-calendar   id="calendar"
+              [(ngModel)] = "birthDate"
               [monthNavigator]="true"
               [yearNavigator]="true"
               yearRange="{{'1935:'+( currentYear | date:'yyyy')}}"

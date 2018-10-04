@@ -36,7 +36,7 @@
 
     <div class="form-group" >
       <div class="inputIntestation">
-        <label id="emailLabel" for="emailInput">Nome</label>
+        <label id="emailLabel" for="emailInput">E-mail</label>
         <div *ngIf="f.emailValidator.invalid && submited" class="errorContainer">
           <i class="errorIcon fas fa-exclamation-circle"></i>
           <div class="error">necessario</div>
@@ -49,7 +49,7 @@
     </div>
 
 
-    <div class="form-group" >
+    <div class="form-group" id="birthDateForm">
       <div class="inputIntestation">
         <label id="birthDateLabel" for="birthDateInput">Data di nascita</label>
         <div *ngIf="f.birthDateValidator.invalid && submited" class="errorContainer">
@@ -58,7 +58,7 @@
         </div>
       </div>
 
-      <app-calendar id="birthDateInput" formControlName="birthDateValidator" [isValid]=" f.birthDateValidator.invalid && submited"   [ngClass]="{'is-invalid':!isValid}"></app-calendar>
+      <app-calendar id="birthDateInput" formControlName="birthDateValidator" [isIValid]="f.birthDateValidator.invalid && submited"></app-calendar>
     </div>
 
 
