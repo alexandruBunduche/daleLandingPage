@@ -1,0 +1,13 @@
+<p-calendar [(ngModel)] = "birthDate"
+              [monthNavigator]="true"
+              [yearNavigator]="true"
+              yearRange="{{'1935:'+( currentYear | date:'yyyy')}}"
+              [maxDate]="currentYear"
+              [locale]="it" dateFormat="dd/mm/yy"
+              placeholder="Data di nascita"
+              showIcon="true"
+              [touchUI]="isTouchDevice()"
+              (onSelect)="onSelect($event)"
+              [ngClass]="{'invalid':!isValid}"
+
+  ></p-calendar>

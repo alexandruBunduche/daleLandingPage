@@ -1,0 +1,86 @@
+<div id="mainContainer" class=" ">
+
+  <form class="form jumbotron" [formGroup]="formGroup">
+
+
+    <div class="form-group" >
+      <div class="inputIntestation">
+        <label id="nameLabel" for="nameInput">Nome</label>
+        <div *ngIf="f.nameValidator.invalid && submited" class="errorContainer">
+          <i class="errorIcon fas fa-exclamation-circle"></i>
+          <div class="error">necessario</div>
+        </div>
+      </div>
+
+      <input type="text" id="nameInput" [ngClass]="{'form-control': true, 'is-invalid': f.nameValidator.invalid && submited}"
+             formControlName="nameValidator"
+             placeholder="Inserisci qui il tuo nome"/>
+    </div>
+
+
+
+    <div class="form-group" >
+      <div class="inputIntestation">
+        <label id="surnameLabel" for="surnameInput">Cognome</label>
+        <div *ngIf="f.surnameValidator.invalid && submited" class="errorContainer">
+          <i class="errorIcon fas fa-exclamation-circle"></i>
+          <div class="error">necessario</div>
+        </div>
+      </div>
+
+      <input type="text" id="surnameInput" [ngClass]="{'form-control': true, 'is-invalid': f.surnameValidator.invalid && submited}"
+             formControlName="surnameValidator"
+             placeholder="Inserisci qui il tuo cognome"/>
+    </div>
+
+
+    <div class="form-group" >
+      <div class="inputIntestation">
+        <label id="emailLabel" for="emailInput">Nome</label>
+        <div *ngIf="f.emailValidator.invalid && submited" class="errorContainer">
+          <i class="errorIcon fas fa-exclamation-circle"></i>
+          <div class="error">necessario</div>
+        </div>
+      </div>
+
+      <input type="text" id="emailInput" [ngClass]="{'form-control': true, 'is-invalid': f.emailValidator.invalid && submited}"
+             formControlName="emailValidator"
+             placeholder="Inserisci qui la tua e-mail"/>
+    </div>
+
+
+    <div class="form-group" >
+      <div class="inputIntestation">
+        <label id="birthDateLabel" for="birthDateInput">Data di nascita</label>
+        <div *ngIf="f.birthDateValidator.invalid && submited" class="errorContainer">
+          <i class="errorIcon fas fa-exclamation-circle"></i>
+          <div class="error">necessario</div>
+        </div>
+      </div>
+
+      <app-calendar id="birthDateInput" formControlName="birthDateValidator" [isValid]=" f.birthDateValidator.invalid && submited"   [ngClass]="{'is-invalid':!isValid}"></app-calendar>
+    </div>
+
+
+    <div class="form-group" >
+      <div class="inputIntestation">
+        <label id="qualificationLabel" for="qualificationInput">Titolo di studio</label>
+        <div *ngIf="f.qualificationValidator.invalid && submited" class="errorContainer">
+          <i class="errorIcon fas fa-exclamation-circle"></i>
+          <div class="error">necessario</div>
+        </div>
+      </div>
+
+      <select class="form-control" id="qualificationInput" formControlName="qualificationValidator">
+        <option value="" disabled="true">Seleziona titolo di studio...</option>
+        <option *ngFor="let titoloStudio of titoliStudio" value="{{titoloStudio.value}}">{{titoloStudio.label}}</option>
+      </select>
+    </div>
+
+    <div id="sbmtBtnDiv">
+      <button id="sbmtBtn" (click)="btnclk()" class="btn btn-dark">Invia</button>
+    </div>
+
+  </form>
+</div>
+

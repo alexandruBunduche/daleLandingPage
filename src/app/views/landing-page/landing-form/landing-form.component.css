@@ -1,0 +1,39 @@
+#sbmtBtn{
+
+  width: 100px;
+  margin: auto;
+}
+
+#sbmtBtnDiv{
+
+  display: flex;
+  justify-content: center;
+  margin: 80px 0 0 0;
+}
+ .inputIntestation{
+
+   display: flex;
+   position: relative;
+
+ }
+
+.errorContainer{
+  max-width: 350px;
+  align-self: flex-end;
+  color: red;
+  position: absolute;
+  right: 0px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.errorIcon{
+  position: relative;
+  left: -10px;
+  bottom: -2px;
+}
+
+.error{
+
+}
