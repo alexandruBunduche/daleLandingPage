@@ -10,5 +10,8 @@
               [touchUI]="isTouchDevice()"
               (onSelect)="onSelect($event)"
               [ngClass]="{'invalid':!isValid}"
+              (onInput)="onInput($event)"
+              [readonlyInput]="true"
+              ng-init="onLoad()"
 
   ></p-calendar>

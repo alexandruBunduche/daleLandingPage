@@ -58,7 +58,7 @@
         </div>
       </div>
 
-      <app-calendar id="birthDateInput" formControlName="birthDateValidator" [isIValid]="f.birthDateValidator.invalid && submited"></app-calendar>
+      <app-calendar id="birthDateInput" formControlName="birthDateValidator" [isIValid]="submited? !f.birthDateValidator.invalid : true "></app-calendar>
     </div>
 
 
@@ -71,7 +71,7 @@
         </div>
       </div>
 
-      <select class="form-control" id="qualificationInput" formControlName="qualificationValidator">
+      <select id="qualificationInput" formControlName="qualificationValidator" [ngClass]="{'form-control': true, 'is-invalid': f.qualificationValidator.invalid && submited}">
         <option value="" disabled="true">Seleziona titolo di studio...</option>
         <option *ngFor="let titoloStudio of titoliStudio" value="{{titoloStudio.value}}">{{titoloStudio.label}}</option>
       </select>

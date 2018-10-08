@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { Component, OnInit} from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Candidate } from '../../../models/Candidate';
 
 @Component({
   selector: 'app-landing-form',
@@ -52,17 +53,20 @@ export class LandingFormComponent implements OnInit {
 
   btnclk() {
     this.submited = true;
-    console.log(this.submited);
-    console.log(this.formGroup.controls.nameValidator.value);
-    console.log(this.formGroup.controls.surnameValidator.value);
-    console.log(this.formGroup.controls.emailValidator.value);
-    console.log(this.formGroup.controls.qualificationValidator.value);
 
-
+    if (!this.formGroup.invalid)
+      console.log(this.getCandidate());
   }
 
-  isValidQualificationSelection(): boolean {
-    return this.qualificationSelection !== '';
+  private getCandidate(): Candidate {
+
+    return {
+              name: this.formGroup.controls.nameValidator.value,
+              surname: this.formGroup.controls.surnameValidator.value,
+              email: this.formGroup.controls.emailValidator.value,
+              birthDate: this.formGroup.controls.birthDateValidator.value,
+              qualification: this.formGroup.controls.qualificationValidator.value
+            }
   }
 }
 
