@@ -73,7 +73,7 @@
 
       <select id="qualificationInput" formControlName="qualificationValidator" [ngClass]="{'form-control': true, 'is-invalid': f.qualificationValidator.invalid && submited}">
         <option value="" disabled="true">Seleziona titolo di studio...</option>
-        <option *ngFor="let titoloStudio of titoliStudio" value="{{titoloStudio.value}}">{{titoloStudio.label}}</option>
+        <option *ngFor="let titoloStudio of qualifications" value="{{titoloStudio.Id}}">{{titoloStudio.Titolo}}</option>
       </select>
     </div>
 

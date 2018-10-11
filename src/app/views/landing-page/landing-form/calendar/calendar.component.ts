@@ -1,4 +1,4 @@
-import { Component, forwardRef, OnInit, ViewEncapsulation, Input, AfterContentChecked} from '@angular/core';
+import { Component, forwardRef, OnInit, ViewEncapsulation, Input, AfterContentChecked } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { InputText } from 'primeng/primeng';
 declare var $: any;
@@ -16,7 +16,7 @@ declare var $: any;
     }
   ]
 })
-export class CalendarComponent implements OnInit, ControlValueAccessor, AfterContentChecked  {
+export class CalendarComponent implements OnInit, ControlValueAccessor, AfterContentChecked {
 
   isValid: boolean = true;
   public it: any;
@@ -45,18 +45,19 @@ export class CalendarComponent implements OnInit, ControlValueAccessor, AfterCon
   }
 
   ngAfterContentChecked(): void {
-    this.txtElement = <HTMLElement>document.getElementById("calendar").children[0].children[0];
-    this.btnElement = <HTMLElement>document.getElementById("calendar").children[0].children[1];
-    this.calendarElement = <HTMLElement>document.getElementById("calendar");
+    this.txtElement = <HTMLElement>document.getElementById('calendar').children[0].children[0];
+    this.btnElement = <HTMLElement>document.getElementById('calendar').children[0].children[1];
+    this.calendarElement = <HTMLElement>document.getElementById('calendar');
 
-    if (this.txtElement != undefined) {
-      if (this.txtElement.style.borderBottomColor != "")
+    if (this.txtElement !== undefined) {
+      if (this.txtElement.style.borderBottomColor !== '') {
         Object.assign(this.defaultBorderColor, this.txtElement.style.borderBottomColor);
+      }
+      else {
+        this.defaultBorderColor = '';
+      }
 
-      else
-        this.defaultBorderColor = "";
-
-      console.log("def is "+this.defaultBorderColor);
+      console.log('def is ' + this.defaultBorderColor);
     }
   }
 
@@ -81,45 +82,48 @@ export class CalendarComponent implements OnInit, ControlValueAccessor, AfterCon
 
 
   onSelect(date: Date): void {
-    this.onChange(date.getTime().toString());
+    this.onChange(date.toLocaleString());
   }
 
 
   @Input() set isIValid(isValid: boolean) {
     this.isValid = isValid;
-    if (isValid)
+    if (isValid) {
       this.setValidStile();
 
-    else
+    }
+    else {
       this.setInvalidStile();
+
+    }
 
     console.log(isValid);
   }
 
   setInvalidStile(): void {
 
-    if (this.txtElement != undefined) {
-      this.txtElement.style.borderBottomColor = "red";
-      this.txtElement.style.borderTopColor = "red";
-      this.txtElement.style.borderLeftColor = "red";
+    if (this.txtElement !== undefined) {
+      this.txtElement.style.borderBottomColor = 'red';
+      this.txtElement.style.borderTopColor = 'red';
+      this.txtElement.style.borderLeftColor = 'red';
     }
 
-    if (this.btnElement != undefined) {
-      this.btnElement.style.borderBottomColor = "red";
-      this.btnElement.style.borderTopColor = "red";
-      this.btnElement.style.borderRightColor = "red";
+    if (this.btnElement !== undefined) {
+      this.btnElement.style.borderBottomColor = 'red';
+      this.btnElement.style.borderTopColor = 'red';
+      this.btnElement.style.borderRightColor = 'red';
     }
   }
 
   setValidStile(): void {
 
-    if (this.txtElement != undefined) {
+    if (this.txtElement !== undefined) {
       this.txtElement.style.borderBottomColor = this.defaultBorderColor;
       this.txtElement.style.borderTopColor = this.defaultBorderColor;
       this.txtElement.style.borderLeftColor = this.defaultBorderColor;
     }
 
-    if (this.btnElement != undefined) {
+    if (this.btnElement !== undefined) {
       this.btnElement.style.borderBottomColor = this.defaultBorderColor;
       this.btnElement.style.borderTopColor = this.defaultBorderColor;
       this.btnElement.style.borderRightColor = this.defaultBorderColor;

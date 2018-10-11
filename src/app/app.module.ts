@@ -14,6 +14,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {HttpClient} from '@angular/common/http';
 import {LandingFormComponent} from './views/landing-page/landing-form/landing-form.component';
 import {FormBuilder} from '@angular/forms';
+import { MainService } from './services/main.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import {FormBuilder} from '@angular/forms';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [HttpClient, FormBuilder],
+  providers: [HttpClient, FormBuilder, MainService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,9 +1,11 @@
+import {Qualification} from './Qualification';
+
 export class Candidate {
 
-  name: string;
-  surname: string;
-  email: string;
-  birthDate: string;
-  qualification: string;
+  Nome: string;
+  Cognome: string;
+  Email: string;
+  DataDiNascita: string;
+  TitoloDiStudio: Qualification;
 }
 
