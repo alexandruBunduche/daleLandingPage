@@ -1,7 +1,6 @@
 import { Component, forwardRef, OnInit, ViewEncapsulation, Input, AfterContentChecked } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { InputText } from 'primeng/primeng';
-declare var $: any;
+
 
 @Component({
   selector: 'app-calendar',
