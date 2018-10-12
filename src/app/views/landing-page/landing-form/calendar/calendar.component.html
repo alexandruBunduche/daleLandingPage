@@ -10,7 +10,7 @@
               [touchUI]="isTouchDevice()"
               (onSelect)="onSelect($event)"
               [ngClass]="{'invalid':!isValid}"
-              (onInput)="onInput($event)"
+              (onInput)="onSelect($event)"
               [readonlyInput]="true"
               ng-init="onLoad()"
 

@@ -23,6 +23,8 @@ export class LandingFormComponent implements OnInit {
 
   ngOnInit() {
 
+    console.log('landing-form : init()');
+
     this.formGroup = this.formBuilder.group({
 
       nameValidator: ['', Validators.required],
@@ -32,7 +34,7 @@ export class LandingFormComponent implements OnInit {
       qualificationValidator: ['', Validators.required]
     });
 
-    this.mainService.getQualifications().subscribe(qualifications => {this.qualifications = qualifications; console.log('qualifications' , this.qualifications)});
+    this.mainService.getQualifications().subscribe(qualifications => { this.qualifications = qualifications; console.log('qualifications', this.qualifications); });
 
   }
 
@@ -46,7 +48,7 @@ export class LandingFormComponent implements OnInit {
 
     if (!this.formGroup.invalid) {
       console.log('valid value ', this.getCandidate());
-      this.mainService.postCandidate(this.getCandidate()).subscribe();
+      this.postCandidate();
     }
   }
 
@@ -59,6 +61,11 @@ export class LandingFormComponent implements OnInit {
       DataDiNascita: this.formGroup.controls.birthDateValidator.value,
       TitoloDiStudio: this.formGroup.controls.qualificationValidator.value
     };
+  }
+
+
+  private postCandidate(): void {
+    this.mainService.postCandidate(this.getCandidate()).subscribe();
   }
 }
 
