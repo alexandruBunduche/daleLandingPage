@@ -56,7 +56,7 @@ export class CalendarComponent implements OnInit, ControlValueAccessor, AfterCon
         this.defaultBorderColor = '';
       }
 
-      console.log('def is ' + this.defaultBorderColor);
+      console.log('calendar ngAfterContentChecked' + this.defaultBorderColor);
     }
   }
 

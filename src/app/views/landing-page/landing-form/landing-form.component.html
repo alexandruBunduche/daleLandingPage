@@ -1,51 +1,66 @@
+
+<ng-template #successModalWindow let-c="close" let-d="dismiss">
+  <div class="modal-header bg-success">
+    <h4 class="modal-title" id="modal-basic-title">Successo</h4>
+    <button id="successModalCloseBtn" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-success">
+    <p>Candidatura registrata con successo</p>
+  </div>
+
+</ng-template>
+
 <div id="mainContainer" class=" ">
 
   <form class="form jumbotron" [formGroup]="formGroup">
 
 
-    <div class="form-group" >
+    <div class="form-group">
       <div class="inputIntestation">
         <label id="nameLabel" for="nameInput">Nome</label>
         <div *ngIf="f.nameValidator.invalid && submited" class="errorContainer">
           <i class="errorIcon fas fa-exclamation-circle"></i>
-          <div class="error">necessario</div>
+          <div class="error">{{nameValErrMsg}}</div>
         </div>
       </div>
 
       <input type="text" id="nameInput" [ngClass]="{'form-control': true, 'is-invalid': f.nameValidator.invalid && submited}"
              formControlName="nameValidator"
-             placeholder="Inserisci qui il tuo nome"/>
+             placeholder="Inserisci qui il tuo nome" />
     </div>
 
 
 
-    <div class="form-group" >
+    <div class="form-group">
       <div class="inputIntestation">
         <label id="surnameLabel" for="surnameInput">Cognome</label>
         <div *ngIf="f.surnameValidator.invalid && submited" class="errorContainer">
           <i class="errorIcon fas fa-exclamation-circle"></i>
-          <div class="error">necessario</div>
+          <div class="error">{{surnameValErrMsg}}</div>
         </div>
       </div>
 
       <input type="text" id="surnameInput" [ngClass]="{'form-control': true, 'is-invalid': f.surnameValidator.invalid && submited}"
              formControlName="surnameValidator"
-             placeholder="Inserisci qui il tuo cognome"/>
+             placeholder="Inserisci qui il tuo cognome" />
     </div>
 
 
-    <div class="form-group" >
+    <div class="form-group">
       <div class="inputIntestation">
         <label id="emailLabel" for="emailInput">E-mail</label>
         <div *ngIf="f.emailValidator.invalid && submited" class="errorContainer">
           <i class="errorIcon fas fa-exclamation-circle"></i>
-          <div class="error">necessario</div>
+          <div class="error">{{emailValErrMsg}}</div>
         </div>
       </div>
 
       <input type="text" id="emailInput" [ngClass]="{'form-control': true, 'is-invalid': f.emailValidator.invalid && submited}"
              formControlName="emailValidator"
-             placeholder="Inserisci qui la tua e-mail"/>
+             (input)="onEmailChange();"
+             placeholder="Inserisci qui la tua e-mail" />
     </div>
 
 
@@ -54,7 +69,7 @@
         <label id="birthDateLabel" for="birthDateInput">Data di nascita</label>
         <div *ngIf="f.birthDateValidator.invalid && submited" class="errorContainer">
           <i class="errorIcon fas fa-exclamation-circle"></i>
-          <div class="error">necessario</div>
+          <div class="error">{{birthDateValErrMsg}}</div>
         </div>
       </div>
 
@@ -62,12 +77,12 @@
     </div>
 
 
-    <div class="form-group"  >
+    <div class="form-group">
       <div class="inputIntestation">
         <label id="qualificationLabel" for="qualificationInput">Titolo di studio</label>
         <div *ngIf="f.qualificationValidator.invalid && submited" class="errorContainer">
           <i class="errorIcon fas fa-exclamation-circle"></i>
-          <div class="error">necessario</div>
+          <div class="error">{{qualificationValErrMsg}}</div>
         </div>
       </div>
 
@@ -78,9 +93,10 @@
     </div>
 
     <div id="sbmtBtnDiv">
-      <button id="sbmtBtn" (click)="btnclk()" class="btn btn-dark">Invia</button>
+      <button id="sbmtBtn" (click)="btnclk();" class="btn btn-dark" data-toggle="modal" data-target="#successModal">Invia</button>
     </div>
 
   </form>
 </div>
+
 

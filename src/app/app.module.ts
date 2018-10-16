@@ -15,6 +15,7 @@ import {HttpClient} from '@angular/common/http';
 import {LandingFormComponent} from './views/landing-page/landing-form/landing-form.component';
 import {FormBuilder} from '@angular/forms';
 import { MainService } from './services/main.service';
+import { NgbModalConfig, NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -30,9 +31,10 @@ import { MainService } from './services/main.service';
     BrowserAnimationsModule,
     InputTextModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule.forRoot()
   ],
-  providers: [HttpClient, FormBuilder, MainService],
+  providers: [HttpClient, FormBuilder, MainService, NgbModalConfig, NgbModal],
   bootstrap: [AppComponent]
 })
 export class AppModule {

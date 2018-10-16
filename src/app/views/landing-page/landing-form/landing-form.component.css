@@ -44,5 +44,7 @@
   border: 1px solid red;
   border-radius: 3.5px;
 }
-#birthDateForm{
+
+#successModalCloseBtn {
+  outline:none;
 }
