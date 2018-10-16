@@ -1,4 +1,4 @@
-import { Component, forwardRef, OnInit, ViewEncapsulation, Input, AfterContentChecked } from '@angular/core';
+import { Component, forwardRef, OnInit, ViewEncapsulation, Input, AfterContentChecked, ViewChild, ContentChildren } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 
@@ -17,12 +17,13 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class CalendarComponent implements OnInit, ControlValueAccessor, AfterContentChecked {
 
+  @ViewChild('calendarComponenet') calendarComponenet;
   isValid: boolean = true;
   public it: any;
   birthDate: Date;
   currentYear: Date = new Date(Date.now());
   private onChange: (value: string) => void;
-  private txtElement: HTMLElement;
+  private txtElement: HTMLInputElement;
   private btnElement: HTMLElement;
   private defaultBorderColor: string;
   private calendarElement: HTMLElement;
@@ -41,14 +42,19 @@ export class CalendarComponent implements OnInit, ControlValueAccessor, AfterCon
       today: 'Oggi',
       clear: 'Pulisci'
     };
+
+    console.dir(this.calendarComponenet);
+ 
+   
   }
 
   ngAfterContentChecked(): void {
-    this.txtElement = <HTMLElement>document.getElementById('calendar').children[0].children[0];
-    this.btnElement = <HTMLElement>document.getElementById('calendar').children[0].children[1];
-    this.calendarElement = <HTMLElement>document.getElementById('calendar');
 
-    if (this.txtElement !== undefined) {
+    this.calendarElement = document.getElementById('calendar');
+    this.btnElement = <HTMLElement>this.calendarElement.children[0].children[1];
+    this.txtElement = <HTMLInputElement>this.calendarElement.children[0].children[0];
+
+    if (this.txtElement !== undefined ) {
       if (this.txtElement.style.borderBottomColor !== '') {
         Object.assign(this.defaultBorderColor, this.txtElement.style.borderBottomColor);
       }
@@ -77,6 +83,9 @@ export class CalendarComponent implements OnInit, ControlValueAccessor, AfterCon
   }
 
   writeValue(obj: any): void {
+    if (this.txtElement !== undefined)
+      this.txtElement.value = obj;
+    console.log('writeValue');
   }
 
 

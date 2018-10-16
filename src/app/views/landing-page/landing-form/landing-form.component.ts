@@ -76,7 +76,7 @@ export class LandingFormComponent implements OnInit {
 
 
   private postCandidate(candidate: Candidate): void {
-    this.mainService.postCandidate(candidate).subscribe(next => { console.log('ok success'); this.openModal(); this.clearFields();}, error => this.catchPostError(error), () => this.post());
+    this.mainService.postCandidate(candidate).subscribe(next => { }, error => this.catchPostError(error), () => { this.post(); console.log('ok success'); this.openModal(); this.clearFields(); });
   }
 
   private post(): void {
@@ -94,6 +94,7 @@ export class LandingFormComponent implements OnInit {
     this.formGroup.controls.qualificationValidator.setValue('');
 
     this.submited = false;
+    this.onEmailChange();
   }
 
   private openModal() {
@@ -113,7 +114,7 @@ export class LandingFormComponent implements OnInit {
     }
   }
 
-  private onEmailChange(): void {
+   onEmailChange(): void {
     try {
 
       if (this.formGroup.controls.emailValidator.errors.pattern) {

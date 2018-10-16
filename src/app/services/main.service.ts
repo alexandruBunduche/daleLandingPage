@@ -6,8 +6,8 @@ import { Candidate } from '../models/Candidate';
 import { TryCatchStmt } from '@angular/compiler';
 
 
-const getQualificationsURL = 'http://192.168.7.175:3000/qualifications';
-const postCandidateURL = 'http://192.168.7.175:3000/candidate';
+const getQualificationsURL = 'http://192.168.7.98:3000/qualifications';
+const postCandidateURL = 'http://192.168.7.98:3000/candidate';
 var httpOptions = {headers: {}};
 
 httpOptions.headers = { 'Content-Type':'application/json'};
