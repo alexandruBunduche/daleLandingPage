@@ -48,3 +48,10 @@
 #successModalCloseBtn {
   outline:none;
 }
+
+#formSucessBtnContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+  outline: none;
+}

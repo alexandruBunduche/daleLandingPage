@@ -21,7 +21,7 @@ export class CalendarComponent implements OnInit, ControlValueAccessor, AfterCon
   isValid: boolean = true;
   public it: any;
   birthDate: Date;
-  currentYear: Date = new Date(Date.now());
+  minValidDate: Date = new Date(Date.now());  //corresponds to the minimum date of birth, to be today of age
   private onChange: (value: string) => void;
   private txtElement: HTMLInputElement;
   private btnElement: HTMLElement;
@@ -44,7 +44,8 @@ export class CalendarComponent implements OnInit, ControlValueAccessor, AfterCon
     };
 
     console.dir(this.calendarComponenet);
- 
+
+    this.minValidDate.setFullYear(this.minValidDate.getFullYear() - 18);
    
   }
 
