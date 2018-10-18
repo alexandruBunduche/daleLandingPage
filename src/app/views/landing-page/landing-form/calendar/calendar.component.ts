@@ -91,7 +91,7 @@ export class CalendarComponent implements OnInit, ControlValueAccessor, AfterCon
 
 
   onSelect(date: Date): void {
-    this.onChange(date.toLocaleString());
+    this.onChange(date.toLocaleDateString());
   }
 
 

@@ -13,11 +13,11 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class LandingFormComponent implements OnInit {
 
   @ViewChild('successModalWindow') successModalWindow;
+  @ViewChild('emailAlreadyPresentModalWindow') emailAlreadyPresentModalWindow;
   qualifications: Qualification[];
   formGroup: FormGroup;
-  submited = false;
+  submited: boolean = false;
   qualificationSelection: string;
-  successfullySubmited: boolean= false;
 
   //validation error message
 
@@ -82,7 +82,6 @@ export class LandingFormComponent implements OnInit {
   private post(): void {
 
     console.log('successfullySubmited');
-    this.successfullySubmited = true;
   }
 
   private clearFields() {
@@ -108,8 +107,8 @@ export class LandingFormComponent implements OnInit {
       case 0: {
         console.log('email already present ', error);
         this.formGroup.controls.emailValidator.setErrors({ notUnique: true });
-        this.emailValErrMsg = 'email gia presente';
-        this.successfullySubmited = false;
+        this.emailValErrMsg = 'nominativo già registrato';
+        this.modalService.open(this.emailAlreadyPresentModalWindow);
       }
     }
   }

@@ -17,6 +17,26 @@
 
 </ng-template>
 
+<ng-template #emailAlreadyPresentModalWindow let-c="close" let-d="dismiss">
+  <div class="modal-header bg-success">
+    <h4 class="modal-title" id="modal-basic-title">Bentornato </h4>
+    <button type="button" id="successModalCloseBtn" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-success">
+    <p>Grazie, ma risulti già presente nei nostri archivi</p>
+  </div>
+  <div id="formSucessBtnContainer">
+    <button class="btn  btn-success  col-sm-3" (click)="d('Cross click')">
+      OK
+    </button>
+  </div>
+
+</ng-template>
+
+
+
 <div id="mainContainer" class=" ">
 
   <form class="form jumbotron" [formGroup]="formGroup">
