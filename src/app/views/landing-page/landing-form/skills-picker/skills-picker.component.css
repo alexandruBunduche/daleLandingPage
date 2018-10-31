@@ -1,0 +1,12 @@
+.ui-multiselect {
+  width: 100%;
+}
+
+.ui-widget {
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
+  font-family: sans-serif !important;
+}
+.ui-multiselect-trigger{
+  display:none;
+}

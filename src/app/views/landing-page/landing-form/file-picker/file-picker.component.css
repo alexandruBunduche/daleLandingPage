@@ -1,0 +1,28 @@
+conatainer {
+  display: flex;
+  align-items: center;
+  margin:0;
+  border:0;
+  padding:0;
+}
+
+.filePicker {
+  width: 224px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+i{
+  margin-left:auto;
+}
+
+#fileNameDiv {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  margin-left: 5px;
+  color: dimgray;
+  display: flex;
+  align-items: center;
+}

@@ -1,4 +1,6 @@
-import {Qualification} from './Qualification';
+import { Qualification } from './Qualification';
+import { Skill } from './Skill';
+
 
 export class Candidate {
 
@@ -7,5 +9,6 @@ export class Candidate {
   Email: string;
   DataDiNascita: string;
   TitoloDiStudio: Qualification;
+  Competenze: Skill[];
 }
 

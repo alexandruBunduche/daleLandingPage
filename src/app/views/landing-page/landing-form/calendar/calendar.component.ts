@@ -43,10 +43,7 @@ export class CalendarComponent implements OnInit, ControlValueAccessor, AfterCon
       clear: 'Pulisci'
     };
 
-    console.dir(this.calendarComponenet);
-
     this.minValidDate.setFullYear(this.minValidDate.getFullYear() - 18);
-   
   }
 
   ngAfterContentChecked(): void {
@@ -62,8 +59,6 @@ export class CalendarComponent implements OnInit, ControlValueAccessor, AfterCon
       else {
         this.defaultBorderColor = '';
       }
-
-      console.log('calendar ngAfterContentChecked' + this.defaultBorderColor);
     }
   }
 
@@ -76,8 +71,6 @@ export class CalendarComponent implements OnInit, ControlValueAccessor, AfterCon
   }
 
   registerOnTouched(fn: any): void {
-
-
   }
 
   setDisabledState(isDisabled: boolean): void {
@@ -105,8 +98,6 @@ export class CalendarComponent implements OnInit, ControlValueAccessor, AfterCon
       this.setInvalidStile();
 
     }
-
-    console.log(isValid);
   }
 
   setInvalidStile(): void {
@@ -137,6 +128,5 @@ export class CalendarComponent implements OnInit, ControlValueAccessor, AfterCon
       this.btnElement.style.borderTopColor = this.defaultBorderColor;
       this.btnElement.style.borderRightColor = this.defaultBorderColor;
     }
-    console.log(this.defaultBorderColor);
   }
 }

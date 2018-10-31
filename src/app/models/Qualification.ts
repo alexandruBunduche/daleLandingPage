@@ -1,6 +1,4 @@
-/*
-* http://usejsdoc.org/
-*/
+
 
 export class Qualification {
 

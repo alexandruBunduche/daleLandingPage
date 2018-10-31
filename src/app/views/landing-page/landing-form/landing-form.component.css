@@ -34,7 +34,7 @@
   bottom: -2px;
 }
 
-.error{
+.error {
 
 }
 
@@ -54,4 +54,16 @@
   justify-content: center;
   margin-bottom: 5px;
   outline: none;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
+
+select::-ms-expand {
+  display: none;
 }

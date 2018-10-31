@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, Form } from '@angular/forms';
 import { Candidate } from '../../../models/Candidate';
 import { MainService } from '../../../services/main.service';
 import { Qualification } from '../../../models/Qualification';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Skill } from '../../../models/Skill';
 
 @Component({
   selector: 'app-landing-form',
@@ -14,10 +15,12 @@ export class LandingFormComponent implements OnInit {
 
   @ViewChild('successModalWindow') successModalWindow;
   @ViewChild('emailAlreadyPresentModalWindow') emailAlreadyPresentModalWindow;
+  curriculumVitaeFile: File;
   qualifications: Qualification[];
   formGroup: FormGroup;
   submited: boolean = false;
   qualificationSelection: string;
+  skills: Skill[];
 
   //validation error message
 
@@ -30,20 +33,20 @@ export class LandingFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private mainService: MainService,
     private config: NgbModalConfig,
-    private modalService: NgbModal
+    private modalService: NgbModal,
   ) {
   }
 
   ngOnInit() {
 
-    console.log('landing-form : init()');
     this.formGroup = this.formBuilder.group({
 
       nameValidator: ['', Validators.required],
       surnameValidator: ['', Validators.required],
       emailValidator: ['',Validators.compose([Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/), Validators.required])],
       birthDateValidator: ['', Validators.required],
-      qualificationValidator: ['', Validators.required]
+      qualificationValidator: ['', Validators.required],
+      curriculumVitaeValidator: ['', ]
     });
 
     this.mainService.getQualifications().subscribe(qualifications => this.qualifications = qualifications);
@@ -58,8 +61,7 @@ export class LandingFormComponent implements OnInit {
     this.submited = true;
 
     if (!this.formGroup.invalid) {
-      console.log('valid value ', this.getCandidate());
-      this.postCandidate(this.getCandidate());
+      this.postCandidate(this.getCandidate(), this.curriculumVitaeFile);
     }
   }
 
@@ -70,18 +72,18 @@ export class LandingFormComponent implements OnInit {
       Cognome: this.formGroup.controls.surnameValidator.value,
       Email: this.formGroup.controls.emailValidator.value,
       DataDiNascita: this.formGroup.controls.birthDateValidator.value,
-      TitoloDiStudio: this.formGroup.controls.qualificationValidator.value
+      TitoloDiStudio: this.formGroup.controls.qualificationValidator.value,
+      Competenze: this.skills
     };
   }
 
 
-  private postCandidate(candidate: Candidate): void {
-    this.mainService.postCandidate(candidate).subscribe(next => { }, error => this.catchPostError(error), () => { this.post(); console.log('ok success'); this.openModal(); this.clearFields(); });
+  private postCandidate(candidate: Candidate, curriculumVitaeFile: File): void {
+
+    this.mainService.postCandidate(candidate, curriculumVitaeFile).subscribe(next => { }, error => this.catchPostError(error), () => { this.post(); console.log('ok success'); this.openModal(); this.clearFields(); });
   }
 
   private post(): void {
-
-    console.log('successfullySubmited');
   }
 
   private clearFields() {
@@ -123,7 +125,17 @@ export class LandingFormComponent implements OnInit {
         this.emailValErrMsg = 'necessario';
       }
     } catch (Err) { }
+  }
 
+  onCurriculumVitaeFileChange(file:File): void {
+    console.dir('cv');
+    console.dir(file);
+    this.curriculumVitaeFile = file;
+  }
+
+  onSkillSellected(skills:Skill[]) {
+
+    this.skills = skills;
   }
 }
 

@@ -1,0 +1,9 @@
+
+<div id="conatainer" class="form-group">
+  <label class="btn btn-primary filePicker">
+    Seleziona File&hellip;
+    <i class="fas fa-cloud-upload-alt"></i>
+    <input type="file" (change)="onSelect($event)" style="display: none;">
+  </label>
+  <div id="fileNameDiv"><p *ngIf="curriculumVitaeFile!=undefined">{{curriculumVitaeFile.name}}</p></div>
+</div>
